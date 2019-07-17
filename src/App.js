@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css'
+import TechList from './components/TechList';
 
-const App = () => <h1>Hello Didi</h1>
+const App = () => <TechList />
 
 export default App;
