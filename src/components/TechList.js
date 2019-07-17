@@ -17,6 +17,11 @@ class TechList extends Component {
     this.setState({ techs: [ ...this.state.techs, this.state.newTech ], newTech: '' })
   }
 
+  handleDelete = (tech) => {
+    console.log(tech)
+    this.setState({ techs: this.state.techs.filter(t => t !== tech) })
+  }
+
   render() {
     const { techs, newTech } = this.state;
 
@@ -24,7 +29,12 @@ class TechList extends Component {
       <>
       <h1>{newTech}</h1>
         <ul>
-          {techs.map(tech => <li key={tech}>{tech}</li>)}
+          {techs.map(tech => (
+            <li key={tech}>
+              {tech}
+              <button onClick={() => this.handleDelete(tech)} type="button">Remover</button>
+            </li>
+          ))}
         </ul>
         <input type="text" onChange={this.handleInputChange} value={newTech}/>
         <button onClick={this.handleSubmit}>Enviar</button>
